@@ -1,5 +1,4 @@
-﻿using Autofac;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,7 @@ namespace Ant.Service.ConfigCenter
     {
         static void Main(string[] args)
         {
-            ContainerBuilder builder = new ContainerBuilder();
+           // ContainerBuilder builder = new ContainerBuilder();
 
             HostFactory.Run(x =>
             {

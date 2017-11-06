@@ -16,6 +16,12 @@ namespace Ant.Service.ConfigCenter
             _log.Error(msg);
         }
 
+        public static void Log(Exception ex)
+        {
+            ILog _log = LogManager.GetLogger("FileLogger");
+            _log.Error(ex.Message + ex.StackTrace);
+        }
+
     }
 
     //public class SqlLogger

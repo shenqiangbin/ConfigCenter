@@ -1,0 +1,16 @@
+﻿drop table if exists DefaultConfig;
+
+create table DefaultConfig
+(
+   ConfigID     		int not null AUTO_INCREMENT COMMENT '唯一标识',  
+   ConfigKey			varchar(50) comment '配置key',
+   ConfigValue 			varchar(50) comment '配置value',
+   Comment  			varchar(500) comment '备注',
+   CreateUser           int COMMENT '创建人id',
+   CreateTime           datetime COMMENT '创建时间',
+   ModifyUser           int COMMENT '修改人id',
+   ModifyTime           datetime COMMENT '修改时间',
+   
+   primary key (ConfigID)
+);
+alter table  DefaultConfig comment '默认配置表';
