@@ -81,6 +81,7 @@
     <Content Include="sql\sql.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="脚本\_readme.txt" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
