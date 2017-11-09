@@ -17,6 +17,11 @@ namespace Ant.Service.Model
             this.Code = 200;
             this.CodeMsg = "success";
         }
+
+        public bool IsSuccess
+        {
+            get { return this.Code == 200; }
+        }
     }
 
     public class Response
@@ -28,6 +33,11 @@ namespace Ant.Service.Model
         {
             this.Code = 200;
             this.CodeMsg = "success";
+        }
+
+        public bool IsSuccess
+        {
+            get { return this.Code == 200; }
         }
     }
 }
