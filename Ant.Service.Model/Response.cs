@@ -11,6 +11,12 @@ namespace Ant.Service.Model
         public int Code { get; set; }
         public string CodeMsg { get; set; }
         public T Data { get; set; }
+
+        public Response()
+        {
+            this.Code = 200;
+            this.CodeMsg = "success";
+        }
     }
 
     public class Response

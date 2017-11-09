@@ -21,6 +21,14 @@ namespace Ant.Service.ConfigCenter
 
             try
             {
+                var configModel = _repository.GetConfigByKey(tableName, key);
+                if(configModel!=null)
+                {
+                    res.Code = 502;
+                    res.CodeMsg = $"配置【{key}】已存在";
+                    return res;
+                }
+
                 var result = _repository.Add(tableName, key, value, comment);
                 if (result == false)
                 {
@@ -38,9 +46,25 @@ namespace Ant.Service.ConfigCenter
             return res;
         }
 
-        public Response Get(string tableName, string key)
+        public Response<ConfigModel> GetConfigByKey(string tableName, string key)
         {
-            Response res = new Response();
+            if (string.IsNullOrEmpty(tableName))
+                tableName = "Default";
+
+            Response<ConfigModel> res = new Response<ConfigModel>();
+
+            try
+            {
+                var result = _repository.GetConfigByKey(tableName, key);
+                res.Data = result;
+            }
+            catch (Exception ex)
+            {
+                res.Code = 500;
+                res.CodeMsg = "异常";
+                Logger.Log(ex);
+            }
+
             return res;
         }
     }

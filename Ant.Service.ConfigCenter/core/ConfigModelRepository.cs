@@ -41,5 +41,18 @@ namespace Ant.Service.ConfigCenter.core
             string sqlText = System.IO.File.ReadAllText("./sql/sql.txt");
             ExeTransaction(sqlText);
         }
+
+        public ConfigModel GetConfigByKey(string tableName, string key)
+        {
+            using (var conn = GetConn())
+            {
+                string sql = $"select * from  {tableName}Config where ConfigKey = @Key;";
+                DynamicParameters para = new DynamicParameters();
+                para.Add("@Key", key);
+
+                var model = conn.Query<ConfigModel>(sql, para);
+                return model.FirstOrDefault();
+            }
+        }
     }
 }

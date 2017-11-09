@@ -16,5 +16,13 @@ namespace Ant.Service.ConfigCenter
         [WebInvoke(Method = "GET", UriTemplate = "Add?tableName={tableName}&key={key}&value={value}&comment={comment}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Response Add(string tableName, string key, string value, string comment);
         //http://localhost:8023/Add?key=doorUrl&value=http://www.baidu.com&comment=门户地址
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "GetConfigByKey?tableName={tableName}&key={key}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        Response<ConfigModel> GetConfigByKey(string tableName, string key);
+        //http://localhost:8023/GetConfigByKey?tableName=default&key=doorUrl
+
+        //复制一份到新表
+        //CREATE TABLE testConfig  SELECT * FROM defaultConfig
     }
 }
